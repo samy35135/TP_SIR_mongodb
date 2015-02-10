@@ -13,9 +13,9 @@ public class Person {
 	@Id
 	private ObjectId id;
 	private String name;
-	@Reference 
+	@Reference ("listadress")
 	private List<Address> address0;
-	
+
 	
 	public Person(){
 	}
@@ -43,8 +43,7 @@ public class Person {
 	}
 	public void setAddress0(List<Address> address0) {
 		this.address0 = address0;
-	}
-	
+	}	
 	
 	
 }

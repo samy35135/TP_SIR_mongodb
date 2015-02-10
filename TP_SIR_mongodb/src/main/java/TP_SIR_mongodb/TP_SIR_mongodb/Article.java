@@ -18,7 +18,7 @@ public class Article {
 	private ObjectId id;
 	private String name;
 	private int stars;
-	@Reference 
+	@Reference ("listacheteurs")
 	private List<Person> buyers;
 	public Article(){
 		

@@ -17,20 +17,28 @@ public class Main {
 	    morphia.map(Person.class).map(Address.class);
 	    Datastore ds = morphia.createDatastore(mongo, "my_database");
 	    
-	    Person p = new Person();
-	    p.setName("Tintin");
 
-	    Address address = new Address();
+	   Address address = new Address();
 	    address.setStreet("123 Some street");
 	    address.setCity("Some city");
 	    address.setPostCode("123 456");
 	    address.setCountry("Some country");
 	    //set address
-	    List<Address> address0 = new ArrayList<Address>();
-	    address0.add(address);
-	    p.setAddress0(address0);
-	    // Save the POJO
+	    ds.save(address);
+	    Person p = new Person();
+	    p.setName("TintinV2");
+	   List<Address> address0 = new ArrayList<Address>();
+	   address0.add(address);   
+	  // ds.save(address0);
+	   p.setAddress0(address0);
+	    // Save the POJo
 	    ds.save(p);
+	    //article
+	    Article article = new Article();
+	    List<Person> buyers=new ArrayList<Person>();
+	    buyers.add(p);
+	    ds.save(article);
+	    
 	    for (Person e : ds.find(Person.class))
 	         System.err.println(e);
 
